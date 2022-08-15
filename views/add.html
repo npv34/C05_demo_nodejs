@@ -49,33 +49,31 @@
     </nav>
 
     <div class="card">
-        <div class="card-header col-12 col-md-12 ">
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    User manager
-                    <a href="/users/add" class="btn btn-success">Add new</a>
-                </div>
-                <div class="col-12 col-md-8">
-                    <input type="text" id="search" class="form-control col-12 col-md-12" name="search">
-                </div>
-            </div>
-
+        <div class="card-header">
+            Add user
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody id="list-users">
-                {list-user}
-                </tbody>
-            </table>
+            <form action="/users/store" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" name="username" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn btn-info" type="button" href="/">Cancel</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -90,7 +88,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="js/my.js"></script>
 </body>
 </html>

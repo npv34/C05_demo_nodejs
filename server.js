@@ -1,5 +1,5 @@
 const http = require('http');
-const port = 8000;
+const port = 8001;
 const fs = require('fs');
 const qs = require('qs');
 const url = require('url'); // xu ly url
@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
 
     let arrExtensions = ['css', 'js', 'png']
 
-    if (!arrExtensions.indexOf(extension)) {
+    if (arrExtensions.indexOf(extension) !== -1) {
         switch (extension) {
             case 'css':
                 fs.readFile('public' + urlPath, 'utf8', (err, data) => {
@@ -51,6 +51,7 @@ const server = http.createServer((req, res) => {
                 })
                 break;
             case 'js':
+                console.log(urlPath)
                 fs.readFile('public' + urlPath, 'utf8', (err, data) => {
                     if (err) {
                         throw new Error(err.message)
@@ -80,7 +81,9 @@ const server = http.createServer((req, res) => {
             case '/delete':
                 // lay gia  tri index
                 let index = +qs.parse(url.parse(req.url).query).index
-                userManager.deleteUser(req, res, index);
+                userManager.deleteUser(req, res, index).catch(err => {
+                    res.end('error')
+                });
                 break;
             case '/about':
                 getTemplate(req, res, 'about');
@@ -105,7 +108,16 @@ const server = http.createServer((req, res) => {
                 }
                 break;
             case '/':
-                userManager.showHomePage(req, res)
+                userManager.showHomePage(req, res);
+                break;
+            case '/users/add':
+                userManager.showFormAdd(req, res);
+                break;
+            case '/users/store':
+                userManager.createUser(req, res);
+                break;
+            case '/search':
+                userManager.search(req, res);
                 break;
             default:
                 res.end()

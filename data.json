@@ -1,17 +1,1 @@
-[
-  {
-    "username": "Quang",
-    "email": "admin@admin.com",
-    "role": "1"
-  },
-  {
-    "username": "Quan",
-    "email": "quan@gmail.com",
-    "role": "1"
-  },
-  {
-    "username": "Teo",
-    "email": "teo@gmail.com",
-    "role": "1"
-  }
-]
+[{"username":"Teo","email":"teo@gmail.com","role":"1"},{"username":"Quang 2","email":"luanpv61@gmail.com","role":"1"}]
